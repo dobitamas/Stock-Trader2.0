@@ -17,39 +17,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
 
-const drawerWidth = 240;
+const drawerWidth = "10%";
 
-{/*
-const useStyles = makeStyles((theme) => ({
-baseDiv: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-  },
-}));
-
-*/}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,7 +66,7 @@ export default function ButtonAppBar() {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            {['Overview', 'Stock Watch', 'Trade', 'CopyTrader'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
@@ -106,7 +75,7 @@ export default function ButtonAppBar() {
           </List>
           <Divider />
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            {['...', '...', '...'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                 <ListItemText primary={text} />

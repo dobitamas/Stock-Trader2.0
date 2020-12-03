@@ -13,75 +13,13 @@ import OfferList from '../Offers/Offers';
 import MyStocks from '../MyStocks/MyStocks';
 
 
-const drawerWidth = 300;
-
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
-  }, 
-  toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  menuButtonHidden: {
-    display: 'none',
-  },
-  title: {
-    flexGrow: 1,
-  },
-  drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
-    },
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
-  },
+
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    maxWidth: "90%",
+    paddingLeft: "10%"
   },
   paper: {
     padding: theme.spacing(2),
@@ -92,11 +30,17 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   fixedHeight: {
-    height: 650,
+    height: "100%",
   },
+  pieChart: {
+    maxWidth: "50%"
+  },
+  tables: {
+    minWidth: "100%",
+    marginLeft: "auto",
+    marginRight: "auto"
+  }
 }));
-
-
 
 export default function Mainpage() {
   const classes = useStyles();
@@ -120,16 +64,16 @@ export default function Mainpage() {
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <h1 style = {{textAlign: "center"}}>PORTFOLIO SUMMARY</h1>
-        <Container maxWidth="lg" className={classes.container} style={{flex: ""}}>
+        <Container className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={8} lg={9} className={classes.pieChart}>
               <Paper className={fixedHeightPaper}>
                 <PieChart series={[AccData.portfolioPerformance.percentageStockValue, AccData.portfolioPerformance.percentageCashValue]} />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={4} lg={3} >
               <Paper className={fixedHeightPaper}>
                 <StockInfo Performance={AccData.portfolioPerformance} />
               </Paper>
@@ -141,14 +85,14 @@ export default function Mainpage() {
             </Grid>
           </Grid>
         </Container>
-        <Container maxWidth="lg" className={classes.container}>
+        <Container className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={8} lg={9} className={classes.tables}>
               <Paper>
                 <OfferList />
               </Paper>
             </Grid>
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={8} lg={9} className={classes.tables}>
               <Paper>
                 <MyStocks />
               </Paper>

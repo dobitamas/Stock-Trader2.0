@@ -58,7 +58,7 @@ export default function StockInfo(props) {
         className={cardHeaderShadowStyles.root}
         classes={cardHeaderStyles}
         title={"Portfolio performance"}
-        subheader={"Detailed view of portfolio"}
+        subheader={"Detailed view of portfolio/profit"}
       />
       <CardContent className={classes.content}>
         <Table>
