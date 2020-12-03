@@ -84,8 +84,10 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
+    justifyContent: "center",
     overflow: 'auto',
     flexDirection: 'column',
+    alignItems: 'center',
   },
   fixedHeight: {
     height: 650,
@@ -99,11 +101,18 @@ export default function Mainpage() {
   const [AccData, setAccData] = useContext(MainpageAccountContext);
   
   useEffect(() => {
-
-  });
+    console.log("ACCDATA: ", AccData)
+  }, []);
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  
+  if (AccData.portfolioPerformance === undefined){
+    return(
+      <h1>loading data...</h1>
+    )
+  } else {
+    console.log("ACCDATA: ", AccData);
     return(
       <div>
         <main className={classes.content}>
@@ -130,6 +139,7 @@ export default function Mainpage() {
         </main> 
       </div>
     )
+  }
 }
 
 

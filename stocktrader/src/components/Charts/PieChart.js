@@ -7,7 +7,7 @@ export default function PieChart(props) {
         series: props.series,
         options: {
         chart: {
-            width: 380,
+            width: '50%',
             type: 'donut',
         },
         labels: ['Stock', 'Cash'],
@@ -15,10 +15,10 @@ export default function PieChart(props) {
             enabled: true
         },
         responsive: [{
-            breakpoint: 480,
+            breakpoint: '50%',
             options: {
             chart: {
-                width: 200
+                width: '50%'
             },
             legend: {
                 show: false
@@ -36,9 +36,9 @@ export default function PieChart(props) {
 
  return (
   <div>
-    <div class="chart-wrap">
+    <div className="chart-wrap">
       <div id="chart">
-      <ReactApexChart options={State? State.options : {}} series={State? State.series : []} type="donut" width={380} />
+      <ReactApexChart options={State? State.options : {}} series={State? State.series : []} type="donut" width={"200%"} />
       </div>
     </div>
   </div>
