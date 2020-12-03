@@ -46,13 +46,13 @@ const StyledTableRow = withStyles((theme) => ({
     },
   }))(TableRow);
 
-export default function OfferList() {
+export default function MyStocks() {
   const [AccData, setAccData] = useContext(MainpageAccountContext);
   const [Offers, setOffers] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
-      setOffers(AccData.offers);
+      setOffers(AccData.stockPerformanceList);
   }, [])
 
 
@@ -67,7 +67,7 @@ export default function OfferList() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}>Offers</Typography>
+          <Typography className={classes.heading}>Stocks</Typography>
         </AccordionSummary>
         <AccordionDetails>
         <TableContainer component={Paper}>

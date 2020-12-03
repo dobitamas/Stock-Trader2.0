@@ -134,7 +134,7 @@ export default function Mainpage() {
               </Paper>
             </Grid>
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
+              <Paper>
                 <OfferList />
               </Paper>
             </Grid>
