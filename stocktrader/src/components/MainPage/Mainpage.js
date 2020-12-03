@@ -1,13 +1,15 @@
-import React from 'react';
+import React,{useContext, useEffect} from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import CandleChart from '../CandleChart/CandleChart';
+import PieChart from '../Charts/PieChart';
 import Box from '@material-ui/core/Box';
 import StockInfo from '../StockInfo/StockInfo';
 import Copyright from '../Copyright';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import {MainpageAccountContext} from '../ProfileContexts/AccountProvider';
+
 
 const drawerWidth = 300;
 
@@ -94,6 +96,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Mainpage() {
   const classes = useStyles();
+  const [AccData, setAccData] = useContext(MainpageAccountContext);
+  
+  useEffect(() => {
+
+  });
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -106,13 +113,13 @@ export default function Mainpage() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                {/* <CandleChart  /> */} 
+                <PieChart series={[AccData.portfolioPerformance.percentageStockValue, AccData.portfolioPerformance.percentageCashValue]} />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                {/* <StockInfo /> */}
+                <StockInfo Performance={AccData.portfolioPerformance} />
               </Paper>
             </Grid>
           </Grid>

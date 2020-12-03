@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useContext} from 'react';
+import React,{useEffect, useContext} from 'react';
 import ReactApexChart from "react-apexcharts";
 import dayjs from "dayjs";
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,7 +7,6 @@ import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import {MainpageAccountContext} from '../ProfileContexts/AccountProvider';
 import {MainpageSymbolsContext} from '../ProfileContexts/SymbolsProvider';
 import {MainpageSelectedSymbolContext} from '../ProfileContexts/SelectedSymbolProvider';
 import {MainpageSelectedStockDataContext} from '../ProfileContexts/SelectedStockDataProvider';
@@ -41,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 function CandleChart() {
-    const [AccData, setAccData] = useContext(MainpageAccountContext);
     const [Symbols, setSymbols] = useContext(MainpageSymbolsContext);
     const [SelectedStockSymbol, setSelectedStokSymbol] = useContext(MainpageSelectedSymbolContext);
     const [SelectedStockData, setSelectedStockData] = useContext(MainpageSelectedStockDataContext);
@@ -60,7 +58,7 @@ function CandleChart() {
  
     }
 
-    const handleStockChange = (event) =>{
+    const handleStockChange = (event) =>{ 
       console.log(event.target.innerText);
     }
 

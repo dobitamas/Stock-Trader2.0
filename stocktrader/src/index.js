@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { MainpageSymbolsContext } from './components/ProfileContexts/SymbolsProvider';
+import { MainpageAccountProvider } from './components/ProfileContexts/AccountProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MainpageSymbolsContext.Provider>
+    <MainpageAccountProvider>
       <App />
-    </MainpageSymbolsContext.Provider>
+    </MainpageAccountProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

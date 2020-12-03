@@ -12,7 +12,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
-import {MainpageSelectedStockDataContext} from '../ProfileContexts/SelectedStockDataProvider';
 
 
 
@@ -36,10 +35,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 }));
 
 
-export default function StockInfo() {
-    const [SelectedStockData, setSelectedStockData] = useContext(MainpageSelectedStockDataContext);
-
-
+export default function StockInfo(props) {
     const classes = useStyles();
     const cardHeaderStyles = useContainedCardHeaderStyles();
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
@@ -47,17 +43,12 @@ export default function StockInfo() {
     const [Rows, setRows] = useState([]);
 
     useEffect(() => {
+      console.log(props);
         const rows = [
-          {id: 0,  type: "Current price: ", value: SelectedStockData.currentPrice},
-          {id: 1,  type: "Open price: ", value: SelectedStockData.openPrice },
-          {id: 2,  type: "Highest price", value: SelectedStockData.highPrice },
-          {id: 3,  type: "Lowest price", value: SelectedStockData.lowPrice },
-          {id: 3,  type: "Previous price", value: SelectedStockData.previousClosePrice },
+          {id: 0,  type: "Portfolio value: ", value: `$${props.Performance.portfolioTotalValue}`},
+          {id: 1,  type: "Stock value: ", value: `$${props.Performance.portfolioTotalStockValue}` },
         ];
         setRows(rows);
-        console.log(SelectedStockData);
-        // setStockName(SelectedStockData.stock.name);
-         
     }, [])
 
 
@@ -66,16 +57,12 @@ export default function StockInfo() {
       <CardHeader
         className={cardHeaderShadowStyles.root}
         classes={cardHeaderStyles}
-        title={SelectedStockData.stock.name}
-        subheader={`Performance of ${SelectedStockData.stock.name}`}
+        title={"Portfolio performance"}
+        subheader={"Detailed view of portfolio"}
       />
       <CardContent className={classes.content}>
         <Table>
           <TableHead>
-            <TableRow>
-              <TableCell>Type</TableCell>
-              <TableCell align="right">Value</TableCell>
-            </TableRow>
           </TableHead>
           <TableBody>
             {Rows.map(row => (
