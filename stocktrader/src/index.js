@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { MainpageSymbolsContext } from './components/ProfileContexts/SymbolsProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MainpageSymbolsContext.Provider>
+      <App />
+    </MainpageSymbolsContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
