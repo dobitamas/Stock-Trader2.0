@@ -48,11 +48,11 @@ const StyledTableRow = withStyles((theme) => ({
 
 export default function MyStocks() {
   const [AccData, setAccData] = useContext(MainpageAccountContext);
-  const [Offers, setOffers] = useState([]);
+  const [MyStocks, setMyStocks] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
-      setOffers(AccData.stockPerformanceList);
+      setMyStocks(AccData.stockPerformanceList);
   }, [])
 
 
@@ -76,23 +76,25 @@ export default function MyStocks() {
           <TableRow>
             <StyledTableCell>Stock name</StyledTableCell>
             <StyledTableCell align="right">Stock symbol</StyledTableCell>
-            <StyledTableCell align="right">Offer type</StyledTableCell>
-            <StyledTableCell align="right">Offer price</StyledTableCell>
-            <StyledTableCell align="right">Amount</StyledTableCell>
-            <StyledTableCell align="right">Offer value</StyledTableCell>
+            <StyledTableCell align="right">Avg purchase price</StyledTableCell>
+            <StyledTableCell align="right">Total purchase value</StyledTableCell>
+            <StyledTableCell align="right">Current price</StyledTableCell>
+            <StyledTableCell align="right">Current value</StyledTableCell>
+            <StyledTableCell align="right">Value change</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {Offers.map((offer) => (
-            <StyledTableRow key={offer.id}>
+          {MyStocks.map((myStock) => (
+            <StyledTableRow key={myStock.id}>
               <StyledTableCell component="th" scope="row">
-                {offer.stock.name}
+                {myStock.stock.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{offer.stock.symbol}</StyledTableCell>
-              <StyledTableCell align="right">{offer.offerType}</StyledTableCell>
-              <StyledTableCell align="right">{offer.price}</StyledTableCell>
-              <StyledTableCell align="right">{offer.quantity}</StyledTableCell>
-              <StyledTableCell align="right">{offer.quantity * offer.price}</StyledTableCell>
+              <StyledTableCell align="right">{myStock.stock.symbol}</StyledTableCell>
+              <StyledTableCell align="right">{`$ ${myStock.averagePurchasePrice}`}</StyledTableCell>
+              <StyledTableCell align="right">{`$ ${myStock.totalPurchaseValue}`}</StyledTableCell>
+              <StyledTableCell align="right">{`$ ${myStock.stockCurrentPrice}`}</StyledTableCell>
+              <StyledTableCell align="right">{`$ ${myStock.stockCurrentValue}`}</StyledTableCell>
+              <StyledTableCell align="right">{`${myStock.stockValueChange} %`}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

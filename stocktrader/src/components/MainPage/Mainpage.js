@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import {MainpageAccountContext} from '../ProfileContexts/AccountProvider';
 import OfferList from '../Offers/Offers';
+import MyStocks from '../MyStocks/MyStocks';
 
 
 const drawerWidth = 300;
@@ -136,6 +137,11 @@ export default function Mainpage() {
             <Grid item xs={12} md={8} lg={9}>
               <Paper>
                 <OfferList />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper>
+                <MyStocks />
               </Paper>
             </Grid>
           </Grid>

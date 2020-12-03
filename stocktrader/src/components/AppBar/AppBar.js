@@ -30,9 +30,7 @@ export default function ButtonAppBar() {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Link to="/mainpage" style={{textColor: "white"}}>
             <Button color="inherit">MainPage</Button>
-          </Link>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

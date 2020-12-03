@@ -90,9 +90,9 @@ export default function OfferList() {
               </StyledTableCell>
               <StyledTableCell align="right">{offer.stock.symbol}</StyledTableCell>
               <StyledTableCell align="right">{offer.offerType}</StyledTableCell>
-              <StyledTableCell align="right">{offer.price}</StyledTableCell>
+              <StyledTableCell align="right">{`$ ${offer.price}`}</StyledTableCell>
               <StyledTableCell align="right">{offer.quantity}</StyledTableCell>
-              <StyledTableCell align="right">{offer.quantity * offer.price}</StyledTableCell>
+              <StyledTableCell align="right">{`$ ${offer.quantity * offer.price}`}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

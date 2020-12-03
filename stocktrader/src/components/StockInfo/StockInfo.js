@@ -46,7 +46,7 @@ export default function StockInfo(props) {
       console.log(props);
         const rows = [
           {id: 0,  type: "Portfolio value: ", value: `$${props.Performance.portfolioTotalValue}`},
-          {id: 1,  type: "Stock value: ", value: `$${props.Performance.portfolioTotalStockValue}` },
+          {id: 1,  type: "Stock value: ", value: `$ ${props.Performance.portfolioTotalStockValue}` },
         ];
         setRows(rows);
     }, [])
