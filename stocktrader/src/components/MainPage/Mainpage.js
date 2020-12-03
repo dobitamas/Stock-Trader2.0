@@ -117,6 +117,7 @@ export default function Mainpage() {
       <div>
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
+        <h1 style = {{textAlign: "center"}}>PORTFOLIO SUMMARY</h1>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
