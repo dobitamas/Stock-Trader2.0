@@ -137,7 +137,7 @@ export default function Mainpage() {
             <Copyright text={"Stock Trader"}/>
           </Box>
         </Container>
-        </main> 
+        </main>
       </div>
     )
   }
