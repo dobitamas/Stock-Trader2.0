@@ -4,7 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import PieChart from '../Charts/PieChart';
 import Box from '@material-ui/core/Box';
-import StockInfo from '../StockInfo/StockInfo';
+import StockInfo from '../Info/StockInfo';
+import AccountInfo from '../Info/AccountInfo';
 import Copyright from '../Copyright';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -80,7 +81,7 @@ export default function Mainpage() {
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <StockInfo Performance={AccData.portfolioPerformance} />
+                <AccountInfo AccData={AccData} />
               </Paper>
             </Grid>
           </Grid>
