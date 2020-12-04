@@ -1,17 +1,15 @@
-import React,{useContext, useEffect} from 'react';
+import React,{useContext, useEffect, useState} from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import PieChart from '../Charts/PieChart';
+import CandleChart from '../Charts/CandleChart';
 import Box from '@material-ui/core/Box';
-import StockInfo from '../Info/StockInfo';
-import AccountInfo from '../Info/AccountInfo';
+import DetailedStockInfo from '../Info/DetailedStockInfo';
 import Copyright from '../Copyright';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import {MainpageAccountContext} from '../ProfileContexts/AccountProvider';
-import OfferList from '../Offers/Offers';
-import MyStocks from '../MyStocks/MyStocks';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,19 +20,28 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "90%",
     paddingLeft: "10%"
   },
-  paper: {
+  paperChart: {
     padding: theme.spacing(2),
-    display: 'flex',
     justifyContent: "center",
     overflow: 'auto',
     flexDirection: 'column',
     alignItems: 'center',
+    
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: "flex",
+    justifyContent: "center",
+    overflow: 'auto',
+    flexDirection: 'column',
+    alignItems: 'center',
+    
   },
   fixedHeight: {
     height: "100%",
   },
   pieChart: {
-    maxWidth: "50%"
+    maxWidth: "80%"
   },
   tables: {
     minWidth: "100%",
@@ -43,15 +50,31 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Mainpage() {
+export default function DetailedStockPage() {
   const classes = useStyles();
   const [AccData, setAccData] = useContext(MainpageAccountContext);
+  const [StockData, setStockData] = useState({
+    "id": 877,
+    "stock": {
+      "id": 1,
+      "name": "Apple",
+      "symbol": "AAPL"
+    },
+    "currentPrice": 122.94,
+    "openPrice": 123.52,
+    "highPrice": 123.78,
+    "lowPrice": 122.21,
+    "previousClosePrice": 123.08,
+    "timeOfRetrieval": "2020-12-04T09:23:05.893+00:00"
+  });
+  
   
   useEffect(() => {
     console.log("ACCDATA: ", AccData)
   }, []);
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const chartPaper = clsx(classes.paperChart, classes.fixedHeight);
 
   
   if (AccData.portfolioPerformance === undefined){
@@ -69,40 +92,21 @@ export default function Mainpage() {
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9} className={classes.pieChart}>
-              <Paper className={fixedHeightPaper}>
-                <PieChart series={[AccData.portfolioPerformance.percentageStockValue, AccData.portfolioPerformance.percentageCashValue]} />
+              <Paper className={chartPaper}>
+                <CandleChart />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3} >
               <Paper className={fixedHeightPaper}>
-                <StockInfo Performance={AccData.portfolioPerformance} />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <AccountInfo AccData={AccData} />
+                <DetailedStockInfo StockData={StockData} />
               </Paper>
             </Grid>
           </Grid>
         </Container>
-        <Container className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9} className={classes.tables}>
-              <Paper>
-                <OfferList />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={8} lg={9} className={classes.tables}>
-              <Paper>
-                <MyStocks />
-              </Paper>
-            </Grid>
-          </Grid>
           <Box pt={4}>
             <Copyright text={"Stock Trader"}/>
           </Box>
-        </Container>
         </main>
       </div>
     )

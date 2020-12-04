@@ -6,7 +6,8 @@ export const MainpageContext = createContext();
 
 
 export const MainpageAccountProvider = (props) => {
-    const [AccData, setAccData] = useState(
+  /*  
+  const [AccData, setAccData] = useState(
         {
         "id": 8,
         "username": "Mr.T",
@@ -79,6 +80,7 @@ export const MainpageAccountProvider = (props) => {
                 {props.children}
             </MainpageContext.Provider>
         );
+        */
 }
 
 export const MainpageSymbolProvider = (props) => {
