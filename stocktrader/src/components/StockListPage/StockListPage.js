@@ -109,27 +109,23 @@ export default function StockListPage(){
     
   
     
-    if (Symbols === undefined){
-      return(
-        <h1>loading data...</h1>
-      )
-    } else {
+
       return(
         <div>
           <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <h1 style = {{textAlign: "center"}}>PORTFOLIO SUMMARY</h1>
           <Container maxWidth="lg" className={classes.container}>
-            <Paper>
-            {const rows = SymbolChunks.map((symbolChunk, index) => 
-            { const symbolCols = SymbolChunks.map((symbol, index) => 
-              {
+        <Paper>
+          {const rows = SymbolChunks.map((symbolChunk, index) => {
+            const symbolCols = SymbolChunks.map((symbol, index) => {
               return(
-                  <Grid item xs={4}>
-                    <StockCard Symbol={symbol} />
-                  </Grid>
-                )
-          })})}
+                <Grid item xs={4}>
+                  <StockCard Symbol={symbol} />
+                </Grid>
+              )
+            })
+          })}
         </Paper>
         <Box pt={4}>
             <Copyright text={"Stock Trader"}/>
@@ -138,5 +134,4 @@ export default function StockListPage(){
         </main>
       </div>
     )
-  }
 }
